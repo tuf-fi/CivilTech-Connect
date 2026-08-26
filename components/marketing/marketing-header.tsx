@@ -13,17 +13,17 @@ export function MarketingHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="border-b border-border bg-foreground text-background">
-        <div className="mx-auto flex h-8 max-w-6xl items-center justify-between px-4 text-xs font-medium tracking-wide">
-          <span>DEALER & TECHNICIAN CERTIFICATION NETWORK</span>
-          <span className="hidden sm:inline">SUPPORT: 1-800-555-0199</span>
+        <div className="mx-auto flex h-7 max-w-6xl items-center justify-between px-4 text-[11px] font-medium tracking-wide">
+          <span>Dealer & Technician Certification Network</span>
+          <span className="hidden sm:inline">Support: 1-800-555-0199</span>
         </div>
       </div>
-      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-4 py-3">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link href="/">
-          <BrandMark />
+          <BrandMark size="sm" />
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm font-semibold uppercase tracking-wide text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -40,13 +40,13 @@ export function MarketingHeader() {
           <ThemeToggle />
           <Link
             href="/login"
-            className="hidden text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:block"
+            className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:block"
           >
             Sign in
           </Link>
           <Link
             href="/register"
-            className="bg-primary px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/30"
+            className="bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/30"
           >
             Enroll
           </Link>

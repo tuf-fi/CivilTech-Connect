@@ -7,6 +7,7 @@ import { HeroIllustration } from "@/components/marketing/hero-illustration";
 import { Photo } from "@/components/shared/photo";
 import { StatCounter } from "@/components/shared/stat-counter";
 import { TestimonialCarousel } from "@/components/marketing/testimonial-carousel";
+import { Marquee } from "@/components/marketing/marquee";
 import { photoUrl } from "@/lib/photo-url";
 import { PLACEHOLDER_COURSES } from "@/lib/placeholder-data/courses";
 import { PLACEHOLDER_INSTRUCTORS } from "@/lib/placeholder-data/instructors";
@@ -102,17 +103,11 @@ export default function HomePage() {
       </section>
 
       <div className="border-b border-border bg-secondary/40 py-5">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 sm:flex-row sm:gap-8">
-          <span className="shrink-0 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-            Trusted across the network
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 sm:justify-start">
-            {DEALER_NETWORK.map((name) => (
-              <span key={name} className="text-sm font-semibold text-muted-foreground/70">
-                {name}
-              </span>
-            ))}
-          </div>
+        <span className="mx-auto block max-w-6xl px-4 text-center text-[11px] font-bold uppercase tracking-widest text-muted-foreground sm:text-left">
+          Trusted across the network
+        </span>
+        <div className="mt-3">
+          <Marquee items={DEALER_NETWORK} />
         </div>
       </div>
 
