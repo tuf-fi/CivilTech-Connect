@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./css/theme.css";
 import "./css/style.css";
 import Navbar from "./navigation/navbar.jsx";
 import Home from "./pages/home.jsx";
@@ -58,7 +59,7 @@ function App() {
         <>
           <Navbar />
 
-          <div className="appContainer">
+          <div className="appContainer" key={location.pathname}>
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />

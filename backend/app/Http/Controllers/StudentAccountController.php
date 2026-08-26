@@ -23,7 +23,15 @@ class StudentAccountController extends Controller
         $student = StudentAccounts::where('student_number', $request->student_number)->first();
 
         if ($student && Hash::check($request->password, $student->password)) {
-            return response()->json(['message' => 'Login Successful!', 'student' => $student], 200);
+            // Invalidate any previously issued tokens, then issue a fresh one.
+            $student->tokens()->delete();
+            $token = $student->createToken('student-token')->plainTextToken;
+
+            return response()->json([
+                'message' => 'Login Successful!',
+                'student' => $student,
+                'token' => $token,
+            ], 200);
         } else {
             return response()->json(['message' => 'Login Failed. Invalid Credentials.'], 401);
         }
@@ -218,8 +226,10 @@ class StudentAccountController extends Controller
     // {
     //     $studentNumber = $request->input('student_number');
 
-    //     // Get the latest student_list_[i] table
-    //     $latestTable = DB::select("SHOW TABLES LIKE 'student_list_%'");
+    //     // Get the latest student_list_[i] table (Postgres-safe via information_schema)
+    //     $latestTable = DB::select(
+    //         "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name LIKE 'student_list_%'"
+    //     );
 
     //     if (empty($latestTable)) {
     //         return response()->json(['message' => 'No student_list tables found.'], 404);
@@ -227,7 +237,7 @@ class StudentAccountController extends Controller
 
     //     // Sort and pick the highest table
     //     $latestTable = collect($latestTable)
-    //         ->pluck('Tables_in_' . DB::getDatabaseName())
+    //         ->pluck('table_name')
     //         ->sortDesc()
     //         ->first();
 

@@ -1,0 +1,25 @@
+<svg width="220" height="64" viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Learnify logo">
+  <defs>
+    <linearGradient id="learnify-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#145da0" />
+      <stop offset="100%" stop-color="#0a3472" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="4" width="56" height="56" rx="14" fill="url(#learnify-mark-grad)" />
+  <path
+    d="M18 40 V24 L30 18 L42 24 V40 M18 40 L30 46 L42 40 M24 27 V37 M36 27 V37"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <text
+    x="72"
+    y="41"
+    font-family="Inter, 'Segoe UI', system-ui, sans-serif"
+    font-size="28"
+    font-weight="700"
+    fill="#145da0"
+  >Learnify</text>
+</svg>

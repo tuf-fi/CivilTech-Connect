@@ -1,0 +1,283 @@
+/* ==========================================================================
+   Learnify Design Tokens & Shared Utility Classes
+   Workstream A1 — design system foundation.
+   Imported once in App.jsx, after Bootstrap CSS/JS and before style.css.
+   ========================================================================== */
+
+:root {
+  /* ---- Colors: brand ---- */
+  --color-primary: #145da0;
+  --color-primary-dark: #125089;
+  --color-primary-darker: #0a3472;
+  --color-primary-darkest: #051d40;
+  --color-navy-950: #041227;
+  --color-navy-700: #10477b;
+  --color-accent: #ffbd59;
+
+  /* ---- Colors: surfaces ---- */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f0f0f0;
+  --color-surface-alt-2: #f3f3f3;
+  --color-surface-alt-3: #f8f9fa;
+  --color-surface-alt-4: #f4f4f4;
+  --color-surface-muted: rgba(236, 236, 236, 0.29);
+
+  /* ---- Colors: text ---- */
+  --color-text: #212529;
+  --color-text-muted: #646464;
+  --color-text-muted-2: #808080;
+  --color-text-light: #e6e6e6;
+  --color-text-invert: #ffffff;
+
+  /* ---- Colors: borders ---- */
+  --color-border: #cccccc;
+  --color-border-strong: #959595;
+  --color-border-input: #848484;
+
+  /* ---- Colors: state ---- */
+  --color-danger: #c50000;
+  --color-danger-text: #ff0000;
+  --color-success: #198754;
+
+  /* ---- Colors: third-party social brand marks (unchanged by redesign) ---- */
+  --color-social-facebook: #3b5998;
+  --color-social-linkedin: #007bb5;
+  --color-social-instagram: #125688;
+  --color-social-pinterest: #cb2027;
+
+  /* ---- Typography ---- */
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-heading: "Inter", "Segoe UI", system-ui, sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-base: 15px;
+  --fs-md: 18px;
+  --fs-lg: 22px;
+  --fs-xl: 28px;
+  --fs-2xl: 36px;
+  --fs-3xl: 48px;
+
+  /* ---- Spacing (for new markup/component chrome) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ---- Elevation ---- */
+  --shadow-sm: rgba(199, 199, 199, 0.446) 2.4px 2.4px 3.2px;
+  --shadow-hover: rgba(199, 199, 199, 0.889) 3px 3px 4px;
+  --shadow-md: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --shadow-lg: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+  /* ---- Radius ---- */
+  --radius-xs: 4px;
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-base: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* ==========================================================================
+   Shared utility classes (Workstream A1)
+   Pure className additions layered onto existing markup — no handler changes.
+   ========================================================================== */
+
+.ctc-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.ctc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ctc-btn {
+  display: inline-block;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.ctc-btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+}
+
+.ctc-btn-primary:hover,
+.ctc-btn-primary:focus {
+  background-color: var(--color-primary-dark);
+  letter-spacing: 2px;
+  color: var(--color-text-invert);
+}
+
+.ctc-btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.ctc-btn-outline:hover,
+.ctc-btn-outline:focus {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+}
+
+.ctc-btn-danger {
+  background-color: var(--color-danger);
+  color: var(--color-text-invert);
+}
+
+.ctc-btn-danger:hover,
+.ctc-btn-danger:focus {
+  opacity: 0.85;
+}
+
+.ctc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 4px 14px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+}
+
+.ctc-section {
+  width: 80%;
+  margin: 0 10%;
+  padding: var(--space-7) 0;
+}
+
+.ctc-section-title {
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+}
+
+/* ---- Scroll reveal (Workstream A4, hooks/useScrollReveal.js) ---- */
+.ctc-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.ctc-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp var(--transition-slow) ease-out;
+}
+
+/* ---- Skeleton loaders (Workstream A4) — drop-in replacement for the spinner ---- */
+.ctc-skeleton-page {
+  width: 80%;
+  margin: 0 10% var(--space-8);
+  padding-top: var(--space-8);
+}
+
+.ctc-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-alt) 0px,
+    var(--color-surface-alt-2) 40px,
+    var(--color-surface-alt) 80px
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: var(--radius-md);
+}
+
+.ctc-skeleton-hero {
+  height: 40vh;
+  margin-bottom: var(--space-6);
+}
+
+.ctc-skeleton-line {
+  height: 16px;
+  margin-bottom: var(--space-3);
+  width: 100%;
+}
+
+.ctc-skeleton-line.short {
+  width: 55%;
+}
+
+.ctc-skeleton-row {
+  display: flex;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.ctc-skeleton-card {
+  height: 220px;
+  flex: 1 1 220px;
+}
+
+/* ---- Route-change fade (Workstream A4, App.jsx .appContainer) ---- */
+@keyframes ctcRouteFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.appContainer {
+  animation: ctcRouteFade var(--transition-slow) ease-out;
+}
