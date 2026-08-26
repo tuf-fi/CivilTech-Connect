@@ -25,9 +25,11 @@ export default function CourseCatalogPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-20">
-      <div className="mb-8 border-b border-border/60 pb-4">
-        <span className="text-xs font-bold uppercase tracking-widest text-primary">Catalog</span>
-        <h1 className="mt-1 text-2xl font-bold sm:text-3xl">Certification tracks</h1>
+      <div className="mb-12">
+        <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          Catalog
+        </span>
+        <h1 className="mt-2 text-2xl font-bold sm:text-3xl">Certification tracks</h1>
         <p className="mt-1 text-muted-foreground">
           {PLACEHOLDER_COURSES.length} active tracks across the dealer network
         </p>
@@ -73,7 +75,7 @@ export default function CourseCatalogPage() {
           No courses match your filters.
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}

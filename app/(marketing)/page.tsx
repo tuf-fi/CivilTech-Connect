@@ -102,11 +102,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="border-b border-border bg-secondary/40 py-5">
-        <span className="mx-auto block max-w-6xl px-4 text-center text-[11px] font-bold uppercase tracking-widest text-muted-foreground sm:text-left">
+      <div className="border-b border-border py-6">
+        <span className="mx-auto block max-w-6xl px-4 text-center text-[11px] font-medium uppercase tracking-widest text-muted-foreground sm:text-left">
           Trusted across the network
         </span>
-        <div className="mt-3">
+        <div className="mt-4">
           <Marquee items={DEALER_NETWORK} />
         </div>
       </div>
@@ -115,11 +115,11 @@ export default function HomePage() {
         <section className="border-b border-border">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-y divide-border sm:grid-cols-4 sm:divide-y-0">
             {STATS.map((stat) => (
-              <div key={stat.label} className="px-6 py-7 text-center transition-colors hover:bg-secondary/60">
+              <div key={stat.label} className="px-6 py-9 text-center">
                 <div className="text-2xl font-bold">
                   <StatCounter value={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <div className="mt-1 text-xs font-medium uppercase tracking-wide text-muted-foreground">
                   {stat.label}
                 </div>
               </div>
@@ -128,20 +128,22 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      <section className="mx-auto max-w-6xl px-4 py-24">
-        <ScrollReveal className="mb-10 flex items-end justify-between border-b border-border/60 pb-4">
+      <section className="mx-auto max-w-6xl px-4 py-28">
+        <ScrollReveal className="mb-14 flex items-end justify-between">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">Catalog</span>
-            <h2 className="mt-1 text-2xl font-bold sm:text-3xl">Active certification tracks</h2>
+            <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Catalog
+            </span>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Active certification tracks</h2>
           </div>
           <Link
             href="/courses"
-            className="hidden text-sm font-bold uppercase tracking-wide text-primary hover:underline sm:block"
+            className="hidden items-center gap-1 text-sm font-medium text-foreground hover:underline sm:flex"
           >
-            View all
+            View all <ArrowRight className="size-3.5" />
           </Link>
         </ScrollReveal>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {PLACEHOLDER_COURSES.slice(0, 6).map((course, i) => (
             <ScrollReveal key={course.id} delay={i * 0.05} className="h-full">
               <CourseCard course={course} />
@@ -150,11 +152,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-secondary/60">
-        <div className="mx-auto max-w-6xl px-4 py-24">
-          <ScrollReveal className="mb-10 border-b border-border/60 pb-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">Why the Academy</span>
-            <h2 className="mt-1 text-2xl font-bold sm:text-3xl">One standard, every dealership</h2>
+      <section className="border-t border-border bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-4 py-28">
+          <ScrollReveal className="mb-14">
+            <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Why the Academy
+            </span>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">One standard, every dealership</h2>
           </ScrollReveal>
           <div className="grid gap-4 lg:grid-cols-4 lg:grid-rows-2">
             {FEATURES.map((feature, i) => (
@@ -164,7 +168,7 @@ export default function HomePage() {
                 className={feature.photo ? "lg:col-span-2 lg:row-span-2" : ""}
               >
                 {feature.photo ? (
-                  <div className="group relative h-full min-h-[280px] overflow-hidden border border-border/60">
+                  <div className="group relative h-full min-h-[280px] overflow-hidden">
                     <Photo
                       seed="torque-academy-diagnostics"
                       keywords={["car", "repair"]}
@@ -178,7 +182,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="group flex h-full flex-col gap-3 border-t-2 border-t-primary bg-card p-6 transition-shadow hover:shadow-md">
+                  <div className="flex h-full flex-col gap-3 border-t-2 border-t-primary pt-5">
                     <feature.icon className="size-6 text-primary" strokeWidth={2.25} />
                     <h3 className="font-bold">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground">{feature.description}</p>
@@ -190,25 +194,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-24">
-        <ScrollReveal className="mb-10 border-b border-border/60 pb-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">Faculty</span>
-          <h2 className="mt-1 text-2xl font-bold sm:text-3xl">Learn from master trainers</h2>
+      <section className="mx-auto max-w-6xl px-4 py-28">
+        <ScrollReveal className="mb-14">
+          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            Faculty
+          </span>
+          <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Learn from master trainers</h2>
         </ScrollReveal>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {PLACEHOLDER_INSTRUCTORS.map((instructor, i) => (
             <ScrollReveal key={instructor.name} delay={i * 0.05} className="h-full">
-              <div className="group flex h-full flex-col overflow-hidden border border-border/60 bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lg">
-                <div className="relative aspect-[4/5] w-full">
-                  <Photo seed={instructor.name} person className="h-full w-full" />
+              <div className="group flex h-full flex-col">
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Photo
+                    seed={instructor.name}
+                    person
+                    className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
                   <div className="absolute inset-0 flex items-end bg-gradient-to-t from-foreground/70 via-transparent to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-background">
                       View profile <ArrowUpRight className="size-3.5" />
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-1 flex-col p-4">
-                  <div className="text-xs font-bold uppercase tracking-wide text-primary">
+                <div className="flex flex-1 flex-col pt-4">
+                  <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                     {instructor.title}
                   </div>
                   <h3 className="mt-1 font-bold">{instructor.name}</h3>
@@ -223,7 +233,7 @@ export default function HomePage() {
       </section>
 
       <section className="border-t border-border bg-foreground text-background">
-        <div className="mx-auto px-4 py-24">
+        <div className="mx-auto px-4 py-28">
           <ScrollReveal>
             <TestimonialCarousel testimonials={PLACEHOLDER_TESTIMONIALS} />
           </ScrollReveal>
