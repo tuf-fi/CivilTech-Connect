@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Star, Users, PlayCircle } from "lucide-react";
 import { Photo } from "@/components/shared/photo";
-import { categoryIcon } from "@/lib/category-icon";
 import { categoryPhotoKeywords } from "@/lib/category-photo";
 import type { PlaceholderCourse } from "@/lib/placeholder-data/courses";
 
@@ -27,7 +26,6 @@ export function CourseCard({ course }: { course: PlaceholderCourse }) {
           seed={course.id}
           keywords={categoryPhotoKeywords(course.category)}
           lock={course.photoLock}
-          icon={categoryIcon(course.category)}
           className="h-36 w-full shrink-0"
         />
         <span className="absolute left-2.5 top-2.5 bg-foreground/80 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-background backdrop-blur">

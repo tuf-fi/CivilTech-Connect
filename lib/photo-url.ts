@@ -1,19 +1,13 @@
 /**
- * Real-photo placeholders. Two sources, chosen per content type:
- *
- *  - `photoUrl` — LoremFlickr, keyword-searched (cars, engines, tools,
- *    hard hats). Good for scene/subject photos where exact keyword
- *    combinations have been manually verified to return on-topic results
- *    (see lib/category-photo.ts) — broad keyword search on a crowdsourced
- *    photo pool is otherwise unreliable (returns anything tagged with the
- *    word, including irrelevant or off-brand results).
- *  - `personPhotoUrl` — randomuser.me, a placeholder service built
- *    specifically for consistent, professional-looking headshot photos.
- *    Far more reliable for "a person's face" than keyword photo search.
- *
- * Both are deterministic per `seed`, so a given course/instructor always
- * gets the same photo. Swap either for your own asset pipeline (CMS, S3,
- * etc.) when real content is available — call sites just need a URL.
+ * Real-photo placeholders via LoremFlickr, keyword-searched. Broad terms
+ * ("garage", "workshop", "dealership", "portrait") are unreliable on a
+ * crowdsourced photo pool — they return anything tagged with the word,
+ * including irrelevant results or real third-party business/brand
+ * signage. The keyword pairs used in lib/category-photo.ts and the
+ * curated person photos below were manually verified image-by-image.
+ * Deterministic per `seed` (locked), so a given course/instructor always
+ * gets the same photo. Swap for your own asset pipeline (CMS, S3, etc.)
+ * when real content is available — call sites just need a URL string.
  */
 function hashSeed(seed: string): number {
   let hash = 0;
@@ -36,9 +30,28 @@ export function photoUrl(
   return `https://loremflickr.com/${width}/${height}/${tags}?lock=${resolvedLock}`;
 }
 
-export function personPhotoUrl(seed: string) {
-  const hash = hashSeed(seed);
-  const gender = hash % 2 === 0 ? "men" : "women";
-  const index = hash % 100;
-  return `https://randomuser.me/api/portraits/${gender}/${index}.jpg`;
+/**
+ * Business-attire headshots, manually verified — keyword photo search
+ * returns mostly business-casual (or occasionally irrelevant) results, so
+ * only these specific keyword+lock combinations are known to show a
+ * person in a suit or professional dress against a clean background.
+ */
+const CURATED_HEADSHOTS: Record<string, { keywords: string[]; lock: number }> = {
+  "R. Fujimoto": { keywords: ["director", "portrait"], lock: 1 },
+  "K. Alvarez": { keywords: ["professional", "headshot"], lock: 2 },
+  "M. Delacruz": { keywords: ["executive", "portrait"], lock: 1 },
+  "T. Nakamura": { keywords: ["director", "portrait"], lock: 2 },
+  "J. Okafor": { keywords: ["professional", "headshot"], lock: 8 },
+  "L. Bergström": { keywords: ["corporate", "portrait"], lock: 2 },
+  "D. Whitfield": { keywords: ["director", "portrait"], lock: 1 },
+  "R. Castellanos": { keywords: ["director", "portrait"], lock: 2 },
+};
+
+export function personPhotoUrl(seed: string, width = 400, height = 500) {
+  const curated = CURATED_HEADSHOTS[seed];
+  if (curated) {
+    return photoUrl(seed, width, height, curated.keywords, curated.lock);
+  }
+  // Fallback for any person not in the curated list above.
+  return photoUrl(seed, width, height, ["professional", "headshot"]);
 }

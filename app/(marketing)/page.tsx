@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShieldCheck, Award, Wrench, Users, Quote, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Award, Wrench, Users, ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { CourseCard } from "@/components/shared/course-card";
 import { HeroIllustration } from "@/components/marketing/hero-illustration";
 import { Photo } from "@/components/shared/photo";
 import { StatCounter } from "@/components/shared/stat-counter";
+import { TestimonialCarousel } from "@/components/marketing/testimonial-carousel";
 import { photoUrl } from "@/lib/photo-url";
 import { PLACEHOLDER_COURSES } from "@/lib/placeholder-data/courses";
 import { PLACEHOLDER_INSTRUCTORS } from "@/lib/placeholder-data/instructors";
+import { PLACEHOLDER_TESTIMONIALS } from "@/lib/placeholder-data/testimonials";
 
 const STATS = [
   { label: "Certification tracks", value: 6, suffix: "" },
@@ -64,17 +66,15 @@ export default function HomePage() {
           className="object-cover grayscale-[55%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/50" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 lg:grid-cols-[1fr_400px] lg:py-24">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 lg:grid-cols-[1fr_400px] lg:py-20">
           <div>
             <span className="inline-flex items-center gap-2 border border-background/25 px-3 py-1 text-xs font-bold uppercase tracking-widest text-background/70">
               Dealer & Technician Certification Network
             </span>
-            <h1 className="mt-6 max-w-2xl text-5xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-6xl">
-              Certified on
-              <br />
-              <span className="text-primary">every system.</span>
+            <h1 className="mt-6 max-w-xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              Certified on <span className="text-primary">every system.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-lg text-background/70">
+            <p className="mt-5 max-w-lg text-base text-background/70 sm:text-lg">
               Torque Academy is the required training platform for technicians, service advisors,
               and sales staff across the dealer network — hybrid systems to shop safety, in one
               place.
@@ -82,35 +82,37 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/courses"
-                className="group flex items-center gap-2 bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
+                className="group flex items-center gap-2 bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
               >
                 View certifications{" "}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/register"
-                className="border border-background/30 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-background transition-all hover:-translate-y-0.5 hover:bg-background/10"
+                className="border border-background/30 px-6 py-3 text-sm font-bold uppercase tracking-wide text-background transition-all hover:-translate-y-0.5 hover:bg-background/10"
               >
                 Create account
               </Link>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[360px] drop-shadow-2xl lg:max-w-none">
+          <div className="mx-auto w-full max-w-[340px] drop-shadow-2xl lg:max-w-none">
             <HeroIllustration />
           </div>
         </div>
       </section>
 
-      <div className="border-b border-border bg-secondary/40 py-4">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-2 px-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+      <div className="border-b border-border bg-secondary/40 py-5">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 sm:flex-row sm:gap-8">
+          <span className="shrink-0 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
             Trusted across the network
           </span>
-          {DEALER_NETWORK.map((name) => (
-            <span key={name} className="font-display text-sm font-bold uppercase tracking-wide text-muted-foreground/70">
-              {name}
-            </span>
-          ))}
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 sm:justify-start">
+            {DEALER_NETWORK.map((name) => (
+              <span key={name} className="text-sm font-semibold text-muted-foreground/70">
+                {name}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -118,8 +120,8 @@ export default function HomePage() {
         <section className="border-b border-border">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-y divide-border sm:grid-cols-4 sm:divide-y-0">
             {STATS.map((stat) => (
-              <div key={stat.label} className="px-6 py-8 text-center transition-colors hover:bg-secondary/60">
-                <div className="font-display text-3xl font-extrabold">
+              <div key={stat.label} className="px-6 py-7 text-center transition-colors hover:bg-secondary/60">
+                <div className="text-2xl font-bold">
                   <StatCounter value={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -131,11 +133,11 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      <section className="mx-auto max-w-6xl px-4 py-20">
+      <section className="mx-auto max-w-6xl px-4 py-24">
         <ScrollReveal className="mb-10 flex items-end justify-between border-b border-border pb-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary">Catalog</span>
-            <h2 className="mt-1 text-3xl font-bold sm:text-4xl">Active certification tracks</h2>
+            <h2 className="mt-1 text-2xl font-bold sm:text-3xl">Active certification tracks</h2>
           </div>
           <Link
             href="/courses"
@@ -154,10 +156,10 @@ export default function HomePage() {
       </section>
 
       <section className="border-t border-border bg-secondary/60">
-        <div className="mx-auto max-w-6xl px-4 py-20">
+        <div className="mx-auto max-w-6xl px-4 py-24">
           <ScrollReveal className="mb-10 border-b border-border pb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">Why the Academy</span>
-            <h2 className="mt-1 text-3xl font-bold sm:text-4xl">One standard, every dealership</h2>
+            <h2 className="mt-1 text-2xl font-bold sm:text-3xl">One standard, every dealership</h2>
           </ScrollReveal>
           <div className="grid gap-4 lg:grid-cols-4 lg:grid-rows-2">
             {FEATURES.map((feature, i) => (
@@ -175,24 +177,16 @@ export default function HomePage() {
                       className="absolute inset-0 h-full w-full"
                     />
                     <div className="relative flex h-full flex-col justify-end gap-2 p-6 text-background">
-                      <span className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md">
-                        <feature.icon className="size-5" strokeWidth={2.25} />
-                      </span>
-                      <h3 className="font-display text-2xl font-extrabold uppercase">{feature.title}</h3>
+                      <feature.icon className="size-6 text-primary" strokeWidth={2.25} />
+                      <h3 className="text-xl font-bold">{feature.title}</h3>
                       <p className="max-w-sm text-sm text-background/80">{feature.description}</p>
                     </div>
                   </div>
                 ) : (
-                  <div className="group flex h-full flex-col gap-3 border border-border bg-card p-6 transition-colors hover:bg-primary">
-                    <span className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-primary/15 transition-colors group-hover:bg-primary-foreground/15 group-hover:text-primary-foreground group-hover:ring-primary-foreground/25">
-                      <feature.icon className="size-5" strokeWidth={2.25} />
-                    </span>
-                    <h3 className="font-bold transition-colors group-hover:text-primary-foreground">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground transition-colors group-hover:text-primary-foreground/80">
-                      {feature.description}
-                    </p>
+                  <div className="group flex h-full flex-col gap-3 border-t-2 border-t-primary bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
+                    <feature.icon className="size-6 text-primary" strokeWidth={2.25} />
+                    <h3 className="font-bold">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
                   </div>
                 )}
               </ScrollReveal>
@@ -201,10 +195,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20">
+      <section className="mx-auto max-w-6xl px-4 py-24">
         <ScrollReveal className="mb-10 border-b border-border pb-4">
           <span className="text-xs font-bold uppercase tracking-widest text-primary">Faculty</span>
-          <h2 className="mt-1 text-3xl font-bold sm:text-4xl">Learn from master trainers</h2>
+          <h2 className="mt-1 text-2xl font-bold sm:text-3xl">Learn from master trainers</h2>
         </ScrollReveal>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PLACEHOLDER_INSTRUCTORS.map((instructor, i) => (
@@ -234,28 +228,9 @@ export default function HomePage() {
       </section>
 
       <section className="border-t border-border bg-foreground text-background">
-        <div className="mx-auto max-w-4xl px-4 py-20 text-center">
+        <div className="mx-auto px-4 py-24">
           <ScrollReveal>
-            <Quote className="mx-auto size-8 text-primary" />
-            <blockquote className="mt-6 text-2xl font-medium leading-snug sm:text-3xl">
-              &ldquo;Every advisor at our store got Customer Experience-certified in the same
-              week. Same standard, same bar, no exceptions — that&apos;s what the Academy
-              gives us.&rdquo;
-            </blockquote>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <Photo
-                seed="J. Okafor"
-                person
-                width={88}
-                height={88}
-                interactive={false}
-                className="size-11 shrink-0 rounded-full"
-              />
-              <div className="text-left">
-                <div className="text-sm font-bold">J. Okafor</div>
-                <div className="text-xs text-background/60">Service Manager, Northgate Torque</div>
-              </div>
-            </div>
+            <TestimonialCarousel testimonials={PLACEHOLDER_TESTIMONIALS} />
           </ScrollReveal>
         </div>
       </section>

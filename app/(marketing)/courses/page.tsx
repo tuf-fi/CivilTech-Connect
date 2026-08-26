@@ -27,7 +27,7 @@ export default function CourseCatalogPage() {
     <div className="mx-auto max-w-6xl px-4 py-16">
       <div className="mb-8 border-b border-border pb-4">
         <span className="text-xs font-bold uppercase tracking-widest text-primary">Catalog</span>
-        <h1 className="mt-1 text-3xl font-bold">Certification tracks</h1>
+        <h1 className="mt-1 text-2xl font-bold sm:text-3xl">Certification tracks</h1>
         <p className="mt-1 text-muted-foreground">
           {PLACEHOLDER_COURSES.length} active tracks across the dealer network
         </p>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Star, Users, Clock, Layers, CheckCircle2 } from "lucide-react";
 import { Photo } from "@/components/shared/photo";
-import { categoryIcon } from "@/lib/category-icon";
 import { categoryPhotoKeywords } from "@/lib/category-photo";
 import { PLACEHOLDER_COURSES } from "@/lib/placeholder-data/courses";
 
@@ -36,7 +35,7 @@ export default async function CourseDetailPage({
           <span className="text-xs font-bold uppercase tracking-widest text-primary">
             {course.category} · {course.level}
           </span>
-          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{course.title}</h1>
+          <h1 className="mt-2 text-2xl font-bold sm:text-3xl">{course.title}</h1>
           <p className="mt-3 text-lg text-muted-foreground">{course.subtitle}</p>
 
           <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
@@ -73,7 +72,6 @@ export default async function CourseDetailPage({
             seed={course.id}
             keywords={categoryPhotoKeywords(course.category)}
             lock={course.photoLock}
-            icon={categoryIcon(course.category)}
             width={900}
             height={500}
             interactive={false}
@@ -102,7 +100,7 @@ export default async function CourseDetailPage({
         </div>
 
         <aside className="h-fit border border-border bg-card p-6 shadow-sm lg:sticky lg:top-24">
-          <div className="font-display text-3xl font-extrabold">
+          <div className="text-2xl font-bold">
             {formatPrice(course.priceCents, course.currency)}
           </div>
           <Link
