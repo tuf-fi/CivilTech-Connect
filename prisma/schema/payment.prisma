@@ -1,0 +1,24 @@
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model Order {
+  id                     String      @id @default(cuid())
+  userId                 String
+  courseId               String
+  amountCents            Int
+  currency               String      @default("USD")
+  status                 OrderStatus @default(PENDING)
+  stripeSessionId        String?     @unique
+  stripePaymentIntentId  String?
+  createdAt              DateTime    @default(now())
+  paidAt                 DateTime?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+}

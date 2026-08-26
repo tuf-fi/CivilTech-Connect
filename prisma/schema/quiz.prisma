@@ -1,0 +1,67 @@
+model Quiz {
+  id                  String  @id @default(cuid())
+  title               String
+  description         String?
+  courseId            String?
+  moduleId            String?
+  passingScorePercent Int     @default(70)
+
+  course    Course?        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  module    Module?        @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+}
+
+model QuizQuestion {
+  id       String @id @default(cuid())
+  quizId   String
+  question String
+  order    Int
+
+  quiz    Quiz                @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  choices QuizChoice[]
+  answers QuizAttemptAnswer[]
+
+  @@index([quizId, order])
+}
+
+model QuizChoice {
+  id             String  @id @default(cuid())
+  quizQuestionId String
+  choiceText     String
+  isCorrect      Boolean @default(false)
+  order          Int
+
+  quizQuestion QuizQuestion        @relation(fields: [quizQuestionId], references: [id], onDelete: Cascade)
+  answers      QuizAttemptAnswer[]
+}
+
+model QuizAttempt {
+  id           String    @id @default(cuid())
+  quizId       String
+  studentId    String
+  scorePercent Int?
+  passed       Boolean?
+  startedAt    DateTime?
+  submittedAt  DateTime?
+
+  quiz    Quiz                @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  student User                @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  answers QuizAttemptAnswer[]
+
+  @@index([quizId, studentId])
+}
+
+model QuizAttemptAnswer {
+  id             String  @id @default(cuid())
+  quizAttemptId  String
+  quizQuestionId String
+  quizChoiceId   String
+  isCorrect      Boolean
+
+  quizAttempt  QuizAttempt  @relation(fields: [quizAttemptId], references: [id], onDelete: Cascade)
+  quizQuestion QuizQuestion @relation(fields: [quizQuestionId], references: [id], onDelete: Cascade)
+  quizChoice   QuizChoice   @relation(fields: [quizChoiceId], references: [id], onDelete: Cascade)
+
+  @@unique([quizAttemptId, quizQuestionId])
+}

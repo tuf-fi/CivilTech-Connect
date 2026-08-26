@@ -1,0 +1,47 @@
+model CourseRating {
+  id        String   @id @default(cuid())
+  studentId String
+  courseId  String
+  rating    Int
+  review    String?
+  createdAt DateTime @default(now())
+
+  student User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course  Course @relation(fields: [courseId], references: [id], onDelete: Restrict)
+
+  @@unique([studentId, courseId])
+}
+
+model Discussion {
+  id        String   @id @default(cuid())
+  lessonId  String
+  authorId  String
+  parentId  String?
+  body      String
+  createdAt DateTime @default(now())
+
+  lesson  Lesson       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  author  User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parent  Discussion?  @relation("Replies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies Discussion[] @relation("Replies")
+
+  @@index([lessonId])
+  @@index([parentId])
+}
+
+model BlogPost {
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  body          String
+  coverImageUrl String?
+  courseId      String?
+  authorId      String
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+
+  course Course? @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  author User    @relation(fields: [authorId], references: [id], onDelete: Restrict)
+
+  @@index([publishedAt])
+}

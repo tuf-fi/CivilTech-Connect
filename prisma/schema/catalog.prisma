@@ -1,0 +1,95 @@
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ContentBlockType {
+  RICH_TEXT
+  VIDEO
+  IMAGE
+  FILE_DOWNLOAD
+  QUIZ_EMBED
+  CODE_SNIPPET
+}
+
+model Course {
+  id            String       @id @default(cuid())
+  slug          String       @unique
+  title         String
+  subtitle      String?
+  description   String
+  coverImageUrl String?
+  level         CourseLevel  @default(BEGINNER)
+  status        CourseStatus @default(DRAFT)
+  priceCents    Int          @default(0)
+  currency      String       @default("USD")
+  category      String?
+  tags          String[]
+  instructorId  String
+  publishedAt   DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  instructor User @relation("InstructorCourses", fields: [instructorId], references: [id], onDelete: Restrict)
+
+  modules      Module[]
+  enrollments  Enrollment[]
+  quizzes      Quiz[]
+  certificates Certificate[]
+  ratings      CourseRating[]
+  blogPosts    BlogPost[]
+  orders       Order[]
+
+  @@index([status, publishedAt])
+}
+
+model Module {
+  id       String @id @default(cuid())
+  courseId String
+  title    String
+  order    Int
+
+  course  Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons Lesson[]
+  quizzes Quiz[]
+
+  @@index([courseId, order])
+}
+
+model Lesson {
+  id               String  @id @default(cuid())
+  moduleId         String
+  title            String
+  slug             String
+  order            Int
+  isPreview        Boolean @default(false)
+  videoUrl         String?
+  videoDurationSec Int?
+
+  module        Module           @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  contentBlocks ContentBlock[]
+  progress      LessonProgress[]
+  discussions   Discussion[]
+
+  @@unique([moduleId, slug])
+  @@index([moduleId, order])
+}
+
+model ContentBlock {
+  id       String           @id @default(cuid())
+  lessonId String
+  type     ContentBlockType
+  order    Int
+  data     Json
+
+  lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@index([lessonId, order])
+}

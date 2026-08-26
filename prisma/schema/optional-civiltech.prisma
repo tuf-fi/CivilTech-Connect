@@ -1,0 +1,116 @@
+// ============================================================================
+// OPTIONAL, EXAMPLE MODULE — safe to delete.
+//
+// This file demonstrates how the template can be extended with an
+// institution-specific module (OJT placement, job board, TESDA course
+// catalog) and, separately, how such a module stays cleanly removable.
+//
+// Nothing outside this file references these models except:
+//   - one back-relation field on `User` in core.prisma
+//     (`ojtApplications OjtApplication[]`, flagged with a matching comment)
+//   - three `SiteModuleToggle` keys: "OJT", "JOB_BOARD", "TESDA_CATALOG"
+//
+// See MODULES.md for the full removal procedure.
+// ============================================================================
+
+enum OjtApplicationStatus {
+  PENDING
+  REVIEWING
+  ACCEPTED
+  REJECTED
+}
+
+model OjtCompany {
+  id                 String @id @default(cuid())
+  companyName        String
+  companyPresident   String
+  address            String
+  slotsAvailable     Int
+  email              String
+  phone              String
+  deploymentLocation String
+  logoUrl            String?
+
+  referrals    OjtReferral[]
+  applications OjtApplication[]
+}
+
+model OjtReferral {
+  id          String   @id @default(cuid())
+  companyName String
+  head        String
+  address     String
+  email       String
+  info        String
+  companyId   String?
+  status      String   @default("pending")
+  submittedAt DateTime @default(now())
+
+  company OjtCompany? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+}
+
+model OjtApplication {
+  id                 String               @id @default(cuid())
+  companyId          String
+  studentId          String
+  deploymentLocation String
+  course             String
+  yearLevel          String
+  coverLetterUrl     String?
+  cvUrl              String?
+  status             OjtApplicationStatus @default(PENDING)
+  submittedAt        DateTime             @default(now())
+
+  company OjtCompany @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  student User       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model JobOpportunity {
+  id          String   @id @default(cuid())
+  logoUrl     String?
+  companyName String
+  jobOffers   String
+  email       String
+  phone       String
+  address     String
+  link        String?
+  createdAt   DateTime @default(now())
+}
+
+model TesdaCategory {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+
+  courses TesdaCourse[]
+}
+
+model TesdaCourse {
+  id         String @id @default(cuid())
+  categoryId String
+  name       String
+  shortDesc  String
+
+  category        TesdaCategory                @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  trainingCenters TesdaCourseTrainingCenter[]
+}
+
+model TesdaTrainingCenter {
+  id      String  @id @default(cuid())
+  name    String
+  address String
+  email   String?
+  phone   String?
+
+  courses TesdaCourseTrainingCenter[]
+}
+
+model TesdaCourseTrainingCenter {
+  courseId String
+  centerId String
+
+  course TesdaCourse          @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  center TesdaTrainingCenter  @relation(fields: [centerId], references: [id], onDelete: Cascade)
+
+  @@id([courseId, centerId])
+}

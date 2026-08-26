@@ -1,0 +1,27 @@
+enum NotificationType {
+  ENROLLMENT
+  COURSE_PUBLISHED
+  LESSON_COMPLETED
+  QUIZ_RESULT
+  CERTIFICATE_ISSUED
+  NEW_DISCUSSION_REPLY
+  BADGE_EARNED
+  OJT_APPLICATION_STATUS
+  PAYMENT_RECEIVED
+  SYSTEM
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  body      String?
+  link      String?
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+}
