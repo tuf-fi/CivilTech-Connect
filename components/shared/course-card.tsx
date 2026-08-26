@@ -19,7 +19,7 @@ export function CourseCard({ course }: { course: PlaceholderCourse }) {
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group flex h-full flex-col overflow-hidden border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
+      className="group flex h-full flex-col overflow-hidden border border-border/60 bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lg"
     >
       <div className="relative">
         <Photo
@@ -54,7 +54,7 @@ export function CourseCard({ course }: { course: PlaceholderCourse }) {
             {course.lessonCount}
           </span>
         </div>
-        <div className="flex items-center justify-between border-t border-border pt-3">
+        <div className="flex items-center justify-between border-t border-border/60 pt-3">
           <span className="font-display text-lg font-extrabold text-card-foreground">
             {formatPrice(course.priceCents, course.currency)}
           </span>

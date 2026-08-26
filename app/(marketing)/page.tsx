@@ -129,7 +129,7 @@ export default function HomePage() {
       </ScrollReveal>
 
       <section className="mx-auto max-w-6xl px-4 py-24">
-        <ScrollReveal className="mb-10 flex items-end justify-between border-b border-border pb-4">
+        <ScrollReveal className="mb-10 flex items-end justify-between border-b border-border/60 pb-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary">Catalog</span>
             <h2 className="mt-1 text-2xl font-bold sm:text-3xl">Active certification tracks</h2>
@@ -152,7 +152,7 @@ export default function HomePage() {
 
       <section className="border-t border-border bg-secondary/60">
         <div className="mx-auto max-w-6xl px-4 py-24">
-          <ScrollReveal className="mb-10 border-b border-border pb-4">
+          <ScrollReveal className="mb-10 border-b border-border/60 pb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">Why the Academy</span>
             <h2 className="mt-1 text-2xl font-bold sm:text-3xl">One standard, every dealership</h2>
           </ScrollReveal>
@@ -164,7 +164,7 @@ export default function HomePage() {
                 className={feature.photo ? "lg:col-span-2 lg:row-span-2" : ""}
               >
                 {feature.photo ? (
-                  <div className="group relative h-full min-h-[280px] overflow-hidden border border-border">
+                  <div className="group relative h-full min-h-[280px] overflow-hidden border border-border/60">
                     <Photo
                       seed="torque-academy-diagnostics"
                       keywords={["car", "repair"]}
@@ -178,7 +178,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="group flex h-full flex-col gap-3 border-t-2 border-t-primary bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
+                  <div className="group flex h-full flex-col gap-3 border-t-2 border-t-primary bg-card p-6 transition-shadow hover:shadow-md">
                     <feature.icon className="size-6 text-primary" strokeWidth={2.25} />
                     <h3 className="font-bold">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground">{feature.description}</p>
@@ -191,14 +191,14 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-24">
-        <ScrollReveal className="mb-10 border-b border-border pb-4">
+        <ScrollReveal className="mb-10 border-b border-border/60 pb-4">
           <span className="text-xs font-bold uppercase tracking-widest text-primary">Faculty</span>
           <h2 className="mt-1 text-2xl font-bold sm:text-3xl">Learn from master trainers</h2>
         </ScrollReveal>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PLACEHOLDER_INSTRUCTORS.map((instructor, i) => (
             <ScrollReveal key={instructor.name} delay={i * 0.05} className="h-full">
-              <div className="group flex h-full flex-col overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lg">
+              <div className="group flex h-full flex-col overflow-hidden border border-border/60 bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lg">
                 <div className="relative aspect-[4/5] w-full">
                   <Photo seed={instructor.name} person className="h-full w-full" />
                   <div className="absolute inset-0 flex items-end bg-gradient-to-t from-foreground/70 via-transparent to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
