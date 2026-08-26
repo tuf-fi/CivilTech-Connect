@@ -10,7 +10,7 @@ export async function seedCore() {
     update: {},
     create: {
       email: "admin@example.com",
-      fullName: "Ava Administrator",
+      fullName: "Program Administrator",
       role: "ADMIN",
       passwordHash,
     },
@@ -18,9 +18,10 @@ export async function seedCore() {
 
   const instructors = await Promise.all(
     [
-      { email: "dana@example.com", fullName: "Dana Whitfield" },
-      { email: "marcus@example.com", fullName: "Marcus Ibe" },
-      { email: "priya@example.com", fullName: "Priya Raman" },
+      { email: "fujimoto@example.com", fullName: "R. Fujimoto" },
+      { email: "alvarez@example.com", fullName: "K. Alvarez" },
+      { email: "delacruz@example.com", fullName: "M. Delacruz" },
+      { email: "nakamura@example.com", fullName: "T. Nakamura" },
     ].map((i) =>
       db.user.upsert({
         where: { email: i.email },
@@ -57,9 +58,9 @@ export async function seedCore() {
 
   await Promise.all(
     [
-      { key: "site_name", value: "e-learning template" },
-      { key: "site_tagline", value: "Learning experiences, built to launch fast" },
-      { key: "contact_email", value: "hello@example.com" },
+      { key: "site_name", value: "Torque Academy" },
+      { key: "site_tagline", value: "Certification training for the Torque Motors dealer network" },
+      { key: "contact_email", value: "academy-support@example.com" },
     ].map((s) =>
       db.siteSetting.upsert({
         where: { key: s.key },

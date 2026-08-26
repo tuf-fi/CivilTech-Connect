@@ -12,9 +12,9 @@ import {
   Bell,
   Settings,
   LogOut,
-  GraduationCap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "@/components/shared/brand-mark";
 
 const LINKS = [
   { href: "/portal/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -31,11 +31,8 @@ export function StudentSidebar() {
 
   return (
     <aside className="flex h-full w-64 shrink-0 flex-col border-r border-border bg-card">
-      <Link href="/" className="flex items-center gap-2 border-b border-border px-5 py-5 font-semibold">
-        <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-          <GraduationCap className="size-4.5" />
-        </span>
-        <span>e-learning</span>
+      <Link href="/" className="border-b border-border px-5 py-5">
+        <BrandMark />
       </Link>
 
       <nav className="flex-1 space-y-1 p-3">

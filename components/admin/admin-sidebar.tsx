@@ -18,9 +18,9 @@ import {
   GraduationCap as TesdaIcon,
   Settings,
   LogOut,
-  GraduationCap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "@/components/shared/brand-mark";
 
 const CORE_LINKS = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -51,12 +51,9 @@ export function AdminSidebar({ role }: { role: "INSTRUCTOR" | "ADMIN" }) {
 
   return (
     <aside className="flex h-full w-64 shrink-0 flex-col border-r border-border bg-card">
-      <Link href="/" className="flex items-center gap-2 border-b border-border px-5 py-5 font-semibold">
-        <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-          <GraduationCap className="size-4.5" />
-        </span>
-        <span>e-learning</span>
-        <span className="ml-auto rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium uppercase text-muted-foreground">
+      <Link href="/" className="flex items-center justify-between gap-2 border-b border-border px-5 py-5">
+        <BrandMark />
+        <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium uppercase text-muted-foreground">
           {role}
         </span>
       </Link>

@@ -1,29 +1,37 @@
 import Link from "next/link";
-import { GraduationCap } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { BrandMark } from "@/components/shared/brand-mark";
 
 const NAV_LINKS = [
-  { href: "/courses", label: "Courses" },
-  { href: "/blog", label: "Blog" },
+  { href: "/courses", label: "Certifications" },
+  { href: "/blog", label: "Bulletins" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
 ];
 
 export function MarketingHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <GraduationCap className="size-4.5" />
-          </span>
-          <span>e-learning</span>
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
+      <div className="border-b border-border bg-foreground text-background">
+        <div className="mx-auto flex h-8 max-w-6xl items-center justify-between px-4 text-xs font-medium tracking-wide">
+          <span>DEALER & TECHNICIAN CERTIFICATION NETWORK</span>
+          <span className="hidden sm:inline">SUPPORT: 1-800-555-0199</span>
+        </div>
+      </div>
+      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-4 py-3">
+        <Link href="/">
+          <BrandMark />
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-7 text-sm font-semibold uppercase tracking-wide text-muted-foreground md:flex">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="transition-colors hover:text-foreground">
+            <Link
+              key={link.href}
+              href={link.href}
+              className="group relative py-1 transition-colors hover:text-foreground"
+            >
               {link.label}
+              <span className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           ))}
         </nav>
@@ -32,15 +40,15 @@ export function MarketingHeader() {
           <ThemeToggle />
           <Link
             href="/login"
-            className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:block"
+            className="hidden text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:block"
           >
-            Log in
+            Sign in
           </Link>
           <Link
             href="/register"
-            className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-105"
+            className="bg-primary px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/30"
           >
-            Get started
+            Enroll
           </Link>
         </div>
       </div>

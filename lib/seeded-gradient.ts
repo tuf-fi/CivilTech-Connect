@@ -14,17 +14,18 @@ function hashString(input: string): number {
 }
 
 const GRADIENT_PAIRS = [
-  ["var(--primary)", "var(--info)"],
-  ["var(--primary)", "var(--success)"],
-  ["var(--info)", "var(--primary)"],
-  ["var(--warning)", "var(--primary)"],
-  ["var(--success)", "var(--info)"],
+  ["var(--primary)", "hsl(0 0% 9%)"],
+  ["hsl(0 0% 9%)", "var(--primary)"],
+  ["hsl(0 0% 20%)", "var(--primary)"],
+  ["var(--primary)", "hsl(0 0% 20%)"],
 ];
+
+const ANGLES = [110, 135, 160];
 
 export function seededGradient(seed: string) {
   const hash = hashString(seed);
   const [from, to] = GRADIENT_PAIRS[hash % GRADIENT_PAIRS.length];
-  const angle = hash % 360;
+  const angle = ANGLES[hash % ANGLES.length];
   return `linear-gradient(${angle}deg, ${from}, ${to})`;
 }
 

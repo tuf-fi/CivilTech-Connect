@@ -34,8 +34,9 @@ function LoginForm() {
 
   return (
     <div className="mx-auto max-w-md px-4 py-20">
-      <h1 className="text-2xl font-bold">Log in</h1>
-      <p className="mt-1 text-muted-foreground">Welcome back.</p>
+      <span className="text-xs font-bold uppercase tracking-widest text-primary">Academy sign in</span>
+      <h1 className="mt-1 text-2xl font-bold">Welcome back</h1>
+      <p className="mt-1 text-muted-foreground">Sign in with your technician ID email.</p>
 
       <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
@@ -73,9 +74,9 @@ function LoginForm() {
         <button
           type="submit"
           disabled={pending}
-          className="mt-2 rounded-full bg-primary py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-105 disabled:opacity-60"
+          className="mt-2 bg-primary py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 disabled:pointer-events-none disabled:opacity-60"
         >
-          {pending ? "Logging in..." : "Log in"}
+          {pending ? "Signing in..." : "Sign in"}
         </button>
       </form>
 
