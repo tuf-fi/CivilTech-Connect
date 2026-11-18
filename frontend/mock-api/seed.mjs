@@ -106,20 +106,20 @@ export function seed() {
       { category: "Electrical & Electronics", description: "Electrical installation, maintenance and electronics servicing.", category_id: "TC003", sort: 3 },
       { category: "Automotive & Land Transport", description: "Vehicle servicing and professional driving.", category_id: "TC004", sort: 4 },
     ]),
-    // training_center is a list of training-center IDs (center_id).
+    // training_center is a JSON string of training-center IDs (center_id), e.g. '["CTR001","CTR002"]'.
     tesda_courses: add([
-      { course: "Carpentry NC II", category_id: "TC001", short_desc: "Formworks, framing, roofing and finish carpentry for buildings.", training_center: ["CTR001", "CTR002", "CTR005"], course_id: "TCO001" },
-      { course: "Masonry NC II", category_id: "TC001", short_desc: "Block laying, plastering, concrete works and tile setting basics.", training_center: ["CTR001", "CTR003", "CTR006"], course_id: "TCO002" },
-      { course: "Plumbing NC II", category_id: "TC001", short_desc: "Install and maintain water supply, drainage and sanitary systems.", training_center: ["CTR001", "CTR002", "CTR004"], course_id: "TCO003" },
-      { course: "Tile Setting NC II", category_id: "TC001", short_desc: "Surface preparation and installation of floor and wall tiles.", training_center: ["CTR002", "CTR005"], course_id: "TCO004" },
-      { course: "Scaffold Erection NC II", category_id: "TC001", short_desc: "Safe erection, inspection and dismantling of scaffolding.", training_center: ["CTR001", "CTR006"], course_id: "TCO005" },
-      { course: "Construction Painting NC II", category_id: "TC001", short_desc: "Surface preparation and application of paints and coatings.", training_center: ["CTR003", "CTR004"], course_id: "TCO006" },
-      { course: "Shielded Metal Arc Welding (SMAW) NC I", category_id: "TC002", short_desc: "Entry-level welding of plates and structural sections.", training_center: ["CTR001", "CTR004", "CTR005"], course_id: "TCO007" },
-      { course: "Shielded Metal Arc Welding (SMAW) NC II", category_id: "TC002", short_desc: "Weld structural steel in multiple positions to code.", training_center: ["CTR001", "CTR004", "CTR006"], course_id: "TCO008" },
-      { course: "Electrical Installation and Maintenance NC II", category_id: "TC003", short_desc: "Wiring, circuits, protection devices and troubleshooting.", training_center: ["CTR001", "CTR002", "CTR004", "CTR006"], course_id: "TCO009" },
-      { course: "Electronics Products Assembly and Servicing NC II", category_id: "TC003", short_desc: "Assemble, test and repair electronic circuits and products.", training_center: ["CTR003", "CTR005"], course_id: "TCO010" },
-      { course: "Automotive Servicing (Engine Repair) NC II", category_id: "TC004", short_desc: "Diagnose, service and repair gasoline and diesel engines.", training_center: ["CTR004", "CTR006"], course_id: "TCO011" },
-      { course: "Driving NC II", category_id: "TC004", short_desc: "Safe vehicle operation, road rules and basic maintenance.", training_center: ["CTR002", "CTR004", "CTR005"], course_id: "TCO012" },
+      { course: "Carpentry NC II", category_id: "TC001", short_desc: "Formworks, framing, roofing and finish carpentry for buildings.", training_center: JSON.stringify(["CTR001", "CTR002", "CTR005"]), course_id: "TCO001" },
+      { course: "Masonry NC II", category_id: "TC001", short_desc: "Block laying, plastering, concrete works and tile setting basics.", training_center: JSON.stringify(["CTR001", "CTR003", "CTR006"]), course_id: "TCO002" },
+      { course: "Plumbing NC II", category_id: "TC001", short_desc: "Install and maintain water supply, drainage and sanitary systems.", training_center: JSON.stringify(["CTR001", "CTR002", "CTR004"]), course_id: "TCO003" },
+      { course: "Tile Setting NC II", category_id: "TC001", short_desc: "Surface preparation and installation of floor and wall tiles.", training_center: JSON.stringify(["CTR002", "CTR005"]), course_id: "TCO004" },
+      { course: "Scaffold Erection NC II", category_id: "TC001", short_desc: "Safe erection, inspection and dismantling of scaffolding.", training_center: JSON.stringify(["CTR001", "CTR006"]), course_id: "TCO005" },
+      { course: "Construction Painting NC II", category_id: "TC001", short_desc: "Surface preparation and application of paints and coatings.", training_center: JSON.stringify(["CTR003", "CTR004"]), course_id: "TCO006" },
+      { course: "Shielded Metal Arc Welding (SMAW) NC I", category_id: "TC002", short_desc: "Entry-level welding of plates and structural sections.", training_center: JSON.stringify(["CTR001", "CTR004", "CTR005"]), course_id: "TCO007" },
+      { course: "Shielded Metal Arc Welding (SMAW) NC II", category_id: "TC002", short_desc: "Weld structural steel in multiple positions to code.", training_center: JSON.stringify(["CTR001", "CTR004", "CTR006"]), course_id: "TCO008" },
+      { course: "Electrical Installation and Maintenance NC II", category_id: "TC003", short_desc: "Wiring, circuits, protection devices and troubleshooting.", training_center: JSON.stringify(["CTR001", "CTR002", "CTR004", "CTR006"]), course_id: "TCO009" },
+      { course: "Electronics Products Assembly and Servicing NC II", category_id: "TC003", short_desc: "Assemble, test and repair electronic circuits and products.", training_center: JSON.stringify(["CTR003", "CTR005"]), course_id: "TCO010" },
+      { course: "Automotive Servicing (Engine Repair) NC II", category_id: "TC004", short_desc: "Diagnose, service and repair gasoline and diesel engines.", training_center: JSON.stringify(["CTR004", "CTR006"]), course_id: "TCO011" },
+      { course: "Driving NC II", category_id: "TC004", short_desc: "Safe vehicle operation, road rules and basic maintenance.", training_center: JSON.stringify(["CTR002", "CTR004", "CTR005"]), course_id: "TCO012" },
     ]),
     // CTR001 is a real TESDA site; the rest are mock training centers.
     training_centers: add([
