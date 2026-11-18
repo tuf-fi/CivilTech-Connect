@@ -100,8 +100,8 @@ p {
 }
 
 .company-card {
-  width: 60% !important;
-  margin: 0 auto 50px auto !important;
+  width: calc(50% - 20px) !important;
+  margin: 0 10px 40px 10px !important;
 }
 
 .card-img-top {
@@ -226,7 +226,7 @@ p {
 
 @media only screen and (max-width: 1024px) {
   .company-card {
-    width: 90% !important;
+    width: calc(50% - 20px) !important;
   }
 }
 
@@ -274,4 +274,20 @@ p {
   .forgotPass-container {
     width: 50%;
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .company-card {
+    width: 100% !important;
+    margin: 0 0 32px 0 !important;
+  }
+}
+
+/* Real organization logos come in many aspect ratios: never stretch them. */
+.company-img,
+.details-image,
+.company-card-img,
+.job-logo-container img {
+  object-fit: contain;
+  background-color: #fff;
 }

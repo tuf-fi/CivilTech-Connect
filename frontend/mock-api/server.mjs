@@ -9,6 +9,7 @@ import { seed } from "./seed.mjs";
 const PORT = process.env.PORT || 8000;
 const here = path.dirname(fileURLToPath(import.meta.url));
 const uploadDir = path.join(here, "storage");
+const assetsDir = path.join(here, "assets"); // committed sample photos
 fs.mkdirSync(uploadDir, { recursive: true });
 
 const db = seed();
@@ -179,9 +180,10 @@ http
       // static-ish images: /storage/..., /founder/..., /uploads/...
       if (!p.startsWith("api/")) {
         const base = path.basename(p);
-        const file = path.join(uploadDir, base);
-        if (base && fs.existsSync(file)) {
-          res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
+        const file = [uploadDir, assetsDir].map((d) => path.join(d, base)).find((f) => base && fs.existsSync(f));
+        if (file) {
+          const type = /\.png$/i.test(file) ? "image/png" : /\.svg$/i.test(file) ? "image/svg+xml" : /\.pdf$/i.test(file) ? "application/pdf" : "image/jpeg";
+          res.writeHead(200, { "Content-Type": type, "Access-Control-Allow-Origin": "*" });
           return fs.createReadStream(file).pipe(res);
         }
         if (/^(storage|founder|uploads|images)\//.test(p)) {

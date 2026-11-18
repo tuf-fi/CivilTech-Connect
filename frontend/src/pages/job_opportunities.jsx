@@ -157,7 +157,7 @@ export default function JobOpportunities() {
                         }
                       >
                         <Figure.Image
-                          alt="171x180"
+                          alt={job.company_name}
                           src={`${APP_URL}/storage/${job.logo}`}
                           className="company-img"
                         />
