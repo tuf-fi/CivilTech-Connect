@@ -2,8 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-// import VideoBg from "../videos/bg_video.mp4";
-import VideoBg from "../videos/ctc_vid.mp4";
+import VideoBg from "../videos/ctc_hero.mp4";
 import Logo from "../img/logo_final.png";
 import "../css/admin/admin_login.css";
 import { AuthContext } from "./components/backend/context/Auth";
@@ -61,7 +60,7 @@ export default function Login() {
   return (
     <section className="admin-login-section">
       <div className="admin-bg-video-container">
-        <video className="admin-bg-video" autoPlay loop muted>
+        <video className="admin-bg-video" autoPlay loop muted playsInline>
           <source src={VideoBg} type="video/mp4" />
         </video>
       </div>

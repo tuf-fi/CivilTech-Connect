@@ -15,7 +15,7 @@
 
 .contact-details h1 {
   margin-bottom: 20px;
-  font-size: 40px;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
   transition: all 0.3s ease-in-out;
 }
 

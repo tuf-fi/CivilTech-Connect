@@ -56,13 +56,18 @@ async function readBody(req) {
 }
 
 function svgPlaceholder(label) {
-  const text = decodeURIComponent(label).replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " ");
+  const text = decodeURIComponent(label).replace(/^\d+_/, "").replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " ");
   const initials = text.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("") || "?";
+  // brand palette: blue ramp with an orange accent, picked deterministically per name
+  const pairs = [["#0a3472", "#145da0"], ["#10477b", "#1d7bbf"], ["#051d40", "#145da0"], ["#0a3472", "#2a6fb5"]];
   let h = 0;
-  for (const ch of text) h = (h * 31 + ch.charCodeAt(0)) % 360;
+  for (const ch of text) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  const [c1, c2] = pairs[h % pairs.length];
   return `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
-<rect width="400" height="400" fill="hsl(${h},45%,38%)"/>
-<text x="200" y="235" font-family="Arial,sans-serif" font-size="140" font-weight="700" fill="#fff" text-anchor="middle">${initials}</text></svg>`;
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
+<rect width="400" height="400" fill="url(#g)"/>
+<rect x="0" y="372" width="400" height="28" fill="#ffbd59"/>
+<text x="200" y="228" font-family="Segoe UI,Arial,sans-serif" font-size="132" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="2">${initials}</text></svg>`;
 }
 
 // ---- generic CRUD ----------------------------------------------------------

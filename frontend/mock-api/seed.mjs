@@ -6,6 +6,7 @@ const add = (rows) => rows.map((r, i) => ({ id: i + 1, created_at: t, updated_at
 export function seed() {
   return {
     basic_info: add([
+      { title: "What is CivilTech Connect", description: "CivilTech Connect is a student-centered platform that brings everything a Civil Technology student needs into one place: curated learning materials, TESDA short courses, job openings from partner firms, and on-the-job-training placements with companies that are ready to host you. Our goal is simple: help you learn faster, get certified, and step into the construction industry with confidence." },
       { title: "Learning Resources", description: "Curated lectures, reference books, design codes and study guides for civil engineering students — organized by subject so you can find what you need before your next exam or project." },
       { title: "Tesda Courses", description: "Explore TESDA-accredited short courses in construction, surveying, welding and related trades. Each course lists the training centers that offer it." },
       { title: "Job Opportunities", description: "Openings from partner firms and contractors looking for civil engineering graduates, technicians and interns." },
@@ -18,14 +19,14 @@ export function seed() {
       { name: "Engr. Paolo Garcia", img: "paolo_garcia.png" },
     ]),
     contacts: add([
-      { media: "Email", info: "civiltech.connect@example.com" },
-      { media: "Phone", info: "+63 912 345 6789" },
-      { media: "Address", info: "College of Engineering, Legazpi City, Albay" },
+      { media: "email", info: "civiltech.connect@example.com" },
+      { media: "phone no.", info: "+63 912 345 6789" },
+      { media: "address", info: "College of Engineering, Legazpi City, Albay" },
     ]),
     socials: add([
-      { social_media: "Facebook", link: "https://facebook.com" },
-      { social_media: "Instagram", link: "https://instagram.com" },
-      { social_media: "LinkedIn", link: "https://linkedin.com" },
+      { social_media: "facebook", link: "facebook.com/civiltechconnect" },
+      { social_media: "instagram", link: "instagram.com/civiltechconnect" },
+      { social_media: "linkedin", link: "linkedin.com/company/civiltechconnect" },
     ]),
     categories: add([
       { category: "Structural Engineering", description: "Analysis and design of beams, columns, slabs and foundations.", category_id: "CAT001", sort: 1 },

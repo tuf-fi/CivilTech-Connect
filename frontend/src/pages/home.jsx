@@ -1,7 +1,6 @@
 import "../css/style.css";
 import "../css/home.css";
-// import VideoBg from "../videos/bg_video.mp4";
-import VideoBg from "../videos/ctc_vid.mp4";
+import VideoBg from "../videos/ctc_hero.mp4";
 import FeatureCard from "./components/featureCard";
 import TeamCard from "./components/teamCard";
 // import sample from "../img/sample.jpg";
@@ -95,7 +94,7 @@ export default function Home() {
         <div className="homeSection">
           <section className="heroSection">
             <div className="vid-bg-container">
-              <video className="bg-video" autoPlay loop muted>
+              <video className="bg-video" autoPlay loop muted playsInline>
                 <source src={VideoBg} type="video/mp4" />
               </video>
             </div>
@@ -113,7 +112,10 @@ export default function Home() {
                 <span className="highlighted-text">CivilTech Connect?</span>
               </h2>
 
-              <p>{description}</p>
+              <p>
+                {description ||
+                  "CivilTech Connect is a student-centered platform that brings learning materials, TESDA courses, job openings and on-the-job-training placements together for Civil Technology students."}
+              </p>
             </div>
           </section>
 
