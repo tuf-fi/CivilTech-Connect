@@ -1,0 +1,62 @@
+# CivilTech Connect screenshots
+
+Desktop shots are 2245x1587 (same size as the portfolio's ThisThat shots); mobile shots are 780x1688.
+
+## public
+- public/01-home-hero.png (2245x1587)
+- public/02-home-about.png (2245x1587)
+- public/03-home-what-we-offer.png (2245x1587)
+- public/04-home-founders.png (2245x1587)
+- public/05-home-contact.png (2245x1587)
+- public/06-home-footer.png (2245x1587)
+- public/07-learning-resources.png (2245x1587)
+- public/08-learning-resources-materials.png (2245x1587)
+- public/09-tesda-courses.png (2245x1587)
+- public/10-tesda-course-training-centers.png (2245x1587)
+- public/11-job-opportunities.png (2245x1587)
+- public/12-job-details.png (2245x1587)
+- public/13-forgot-password.png (2245x1587)
+
+## student
+- student/01-login-modal.png (2245x1587)
+- student/02-login-filled.png (2245x1587)
+- student/03-logged-in-home.png (2245x1587)
+- student/04-account-menu.png (2245x1587)
+- student/05-ojt-companies.png (2245x1587)
+- student/06-ojt-company-cards.png (2245x1587)
+- student/07-ojt-apply-form.png (2245x1587)
+- student/08-ojt-apply-filled.png (2245x1587)
+- student/09-ojt-apply-submitted.png (2245x1587)
+- student/10-ojt-already-applied.png (2245x1587)
+- student/11-ojt-company-referral-form.png (2245x1587)
+- student/12-ojt-referral-submitted.png (2245x1587)
+- student/13-change-password.png (2245x1587)
+- student/14-notifications.png (2245x1587)
+
+## admin
+- admin/01-admin-login.png (2245x1587)
+- admin/02-basic-info.png (2245x1587)
+- admin/03-founders.png (2245x1587)
+- admin/04-contact-info.png (2245x1587)
+- admin/05-socials.png (2245x1587)
+- admin/06-learning-categories.png (2245x1587)
+- admin/07-learning-topics.png (2245x1587)
+- admin/08-learning-materials.png (2245x1587)
+- admin/09-tesda-categories.png (2245x1587)
+- admin/10-tesda-courses.png (2245x1587)
+- admin/11-tesda-training-centers.png (2245x1587)
+- admin/12-job-opportunities.png (2245x1587)
+- admin/13-ojt-companies.png (2245x1587)
+- admin/14-ojt-referrals.png (2245x1587)
+- admin/15-ojt-applications.png (2245x1587)
+- admin/16-student-lists.png (2245x1587)
+- admin/17-add-job-opportunity-modal.png (2245x1587)
+- admin/18-add-ojt-company-modal.png (2245x1587)
+
+## mobile
+- mobile/01-home.png (780x1688)
+- mobile/02-menu.png (780x1688)
+- mobile/03-what-we-offer.png (780x1688)
+- mobile/04-founders.png (780x1688)
+- mobile/05-learning-resources.png (780x1688)
+- mobile/06-job-opportunities.png (780x1688)
