@@ -146,7 +146,9 @@ const getRoutes = [
   [/^job-opportunities$/, () => db.job_opportunities],
   [/^ojt-companies$/, () => db.ojt_companies],
   [/^ojt-referrals$/, () => db.ojt_referrals],
-  [/^ojt-applications$/, () => db.ojt_applications],
+  [/^ojt-applications$/, () =>
+    // like the real API: the apply form stores the company_id, the list shows the company name
+    db.ojt_applications.map((r) => ({ ...r, company_name: db.ojt_companies.find((c) => c.company_id === r.company_name)?.company_name ?? r.company_name }))],
   [/^tesda-categories$/, () => ({ categories: db.tesda_categories })],
   [/^tesda-courses$/, () => ({ courses: rel("tesda_courses") })],
   [/^training-centers$/, () => db.training_centers],
@@ -194,6 +196,11 @@ http
       }
 
       const route = p.slice(4);
+      if (route === "__reset") { // dev helper: restore the original sample data
+        for (const k of Object.keys(db)) delete db[k];
+        Object.assign(db, seed());
+        return ok(res, { message: "Mock data reset" });
+      }
       const body = await readBody(req);
 
       if (req.method === "GET") {
@@ -210,7 +217,7 @@ http
       if (route === "user-login") {
         let s = db.students.find((x) => x.student_number === body.student_number);
         if (!s) {
-          s = { id: nextId("students"), student_number: body.student_number, full_name: "Demo Student", year_level: "3rd Year", course: "BS Civil Engineering" };
+          s = { id: nextId("students"), student_number: body.student_number, full_name: "Demo Student", year_level: "4", course: "BS Civil Engineering" };
           db.students.push(s);
         }
         return send(res, 200, { message: "Login Successful!", student: s, token: "mock-student-token" });
