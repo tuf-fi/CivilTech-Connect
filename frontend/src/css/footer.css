@@ -4,9 +4,9 @@
 }
 
 .footer-content {
-  width: 90%;
-  margin: 0 5%;
-  padding: 50px 0 90px 0;
+  width: min(1120px, 90%);
+  margin: 0 auto;
+  padding: 56px 0 64px 0;
 }
 
 .logos {
@@ -28,7 +28,9 @@
 }
 
 .credit .desc p {
-  font-size: 16px;
+  font-size: 14px;
+  max-width: 32ch;
+  line-height: 1.6;
 }
 
 .footer-list-title {
@@ -52,7 +54,7 @@
 }
 
 .footer-features li a:hover {
-  color: rgb(79, 79, 255);
+  color: #ffbd59;
   text-decoration: underline;
 }
 

@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../css/home-modern.css";
 
 export default function Home() {
   const [description, setDescription] = useState("");
@@ -94,7 +95,15 @@ export default function Home() {
         <div className="homeSection">
           <section className="heroSection">
             <div className="vid-bg-container">
-              <video className="bg-video" autoPlay loop muted playsInline>
+              <video
+                className="bg-video"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                aria-hidden="true"
+              >
                 <source src={VideoBg} type="video/mp4" />
               </video>
             </div>
@@ -102,17 +111,35 @@ export default function Home() {
             <div className="overlay-text-hero">
               <h1 className="welcome">Welcome To</h1>
               <h1 className="web-title">CivilTech Connect</h1>
+              <p className="hero-tagline">
+                Learning resources, TESDA courses, jobs and OJT placements for
+                Civil Technology students, all in one place.
+              </p>
+              <div className="hero-actions">
+                <button
+                  type="button"
+                  className="hero-btn primary"
+                  onClick={navigateToLearningMaterials}
+                >
+                  Start learning
+                </button>
+                <button
+                  type="button"
+                  className="hero-btn"
+                  onClick={navigateToOJT}
+                >
+                  Find OJT companies
+                </button>
+              </div>
             </div>
           </section>
 
           <section className="overview">
-            <div className="overview-text">
-              <h2>
-                What is{" "}
-                <span className="highlighted-text">CivilTech Connect?</span>
+            <div className="section-inner overview-grid">
+              <h2 className="overview-title">
+                What is <span className="highlighted-text">CivilTech Connect?</span>
               </h2>
-
-              <p>
+              <p className="overview-copy">
                 {description ||
                   "CivilTech Connect is a student-centered platform that brings learning materials, TESDA courses, job openings and on-the-job-training placements together for Civil Technology students."}
               </p>
@@ -120,30 +147,32 @@ export default function Home() {
           </section>
 
           <section className="features">
-            <div className="feature-card">
-              <div className="feature-heading d-flex flex-column align-items-center">
-                <h1 className="title text-capitalize fw-bold">what we offer</h1>
-                <div className="feature-line"></div>
+            <div className="section-inner">
+              <div className="section-head">
+                <h2 className="section-title">What we offer</h2>
+                <p className="section-sub">
+                  Everything you need from first lesson to first job.
+                </p>
               </div>
 
-              <div className="row justify-content-center">
+              <div className="offer-list">
                 <FeatureCard
                   imgSrc={LM_FT}
-                  // title="Learning Materials"
+                  label="Learning Resources"
                   desc="A curated collection of resources designed to support Civil Technology students in mastering key concepts."
                   navigate={navigateToLearningMaterials}
                 />
 
                 <FeatureCard
                   imgSrc={TESDA_FT}
-                  // title="TESDA Courses"
+                  label="TESDA Courses"
                   desc="Specialized technical programs to enhance skills in Civil Technology, equipping students for certification and careers in the construction industry."
                   navigate={navigateToTesdaCourses}
                 />
 
                 <FeatureCard
                   imgSrc={JO_FT}
-                  // title="Job Opportunities"
+                  label="Job Opportunities"
                   desc="A platform connecting Civil Technology graduates to employment options that align with your academic training and skills."
                   navigate={navigateToJobOpportunities}
                 />
@@ -151,6 +180,7 @@ export default function Home() {
                 <FeatureCard
                   imgSrc={OJT_FT}
                   title="OJT Companies"
+                  label="OJT Companies"
                   desc="On-the-Job Training (OJT) placements that immerse Civil Technology students in real-world construction projects."
                   navigate={navigateToOJT}
                   user={studentInfo}
@@ -160,21 +190,15 @@ export default function Home() {
           </section>
 
           <section className="team">
-            <div className="team-card">
-              <div className="team-title">
-                <div className="team-heading d-flex align-items-center justify-content-center">
-                  <h1 className="title text-capitalize fw-bold">
-                    the founders
-                  </h1>
-                  <div className="line team-line"></div>
-                </div>
-
-                <div className="team-desc">
-                  <p>Meet the visionaries behind CivilTech Connect!</p>
-                </div>
+            <div className="section-inner">
+              <div className="section-head">
+                <h2 className="section-title">The founders</h2>
+                <p className="section-sub">
+                  Meet the visionaries behind CivilTech Connect.
+                </p>
               </div>
 
-              <div className="row justify-content-evenly">
+              <div className="team-grid">
                 {founders.map((founder) => (
                   <TeamCard
                     key={founder.id}
