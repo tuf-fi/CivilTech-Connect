@@ -128,3 +128,19 @@
     margin-bottom: 40px;
   }
 }
+
+/* Contact details: smaller text, wrap long values instead of colliding with Socials */
+.footer-contactInfo li {
+  margin-bottom: 16px;
+}
+
+.footer-contactInfo li p.media {
+  font-size: 13px;
+}
+
+.footer-contactInfo li p.value {
+  margin-left: 5px;
+  font-size: 14px;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}

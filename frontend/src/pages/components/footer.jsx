@@ -54,7 +54,7 @@ export default function Footer() {
     <section className="footer-section">
       <div className="footer-content">
         <div className="row justify-content-between">
-          <div className="credit col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+          <div className="credit col-12 col-sm-12 col-md-12 col-lg-6 col-xl-3">
             <div className="logos">
               <img
                 className="bu_logo"
@@ -97,7 +97,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="footer-contactInfo col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
+          <div className="footer-contactInfo col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
             <div className="footer-list-title">Contact Info</div>
 
             <ul className="list-unstyled">
